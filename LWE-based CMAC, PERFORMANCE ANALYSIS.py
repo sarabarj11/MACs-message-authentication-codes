@@ -19,7 +19,7 @@ from Crypto.Util.Padding import pad, unpad
 from Crypto.Protocol.KDF import PBKDF2
 
 ##############################################################################################################
-#KEY EXCHAGE PROTOCOL inspired by DING
+#My post-quantum KEY EXCHANGE PROTOCOL inspired by DING
 ##############################################################################################################
 #public parameters generation
 def public_params_for_mac_v1(m,q):
@@ -78,7 +78,7 @@ def compute_shared_secret(b_secret2,pb_public1,sigma2,m,q,alpha,a,M,A):
     return shared_secret
 
 ##############################################################################################################
-#My MACs
+#My post-quantum MACs
 ##############################################################################################################
 #secret key generation
 def KeysGen(Shared_key,m,q,alpha,A) :

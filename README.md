@@ -10,6 +10,16 @@ The correctness of the post-quantum MACs holds under the following parameter con
 
    - q is a prime number in the interval [m^2,m^3].
 
+   - ## Parameter Selection
+
+      - To enhance security, select $q$ as a prime number within the interval:
+
+            $$
+            q \in [\text{prevprime}(5m^3), m^3]
+            $$
+
+            where $\text{prevprime}(n)$ returns the largest prime less than or equal to $n$
+
 This repository includes:
 
     The implementation of the proposed post-quantum MAC schemes,

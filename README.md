@@ -15,7 +15,7 @@ The correctness of the post-quantum MACs holds under the following parameter con
       - To enhance security, select $q$ as a prime number within the interval:
 
             $$
-            q \in [\text{prevprime}(5m^3), m^3]
+            q \in [5*\text{prevprime}(m^3)/6, m^3]
             $$
 
             where $\text{prevprime}(n)$ returns the largest prime less than or equal to $n$

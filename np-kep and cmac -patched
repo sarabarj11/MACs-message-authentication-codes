@@ -133,7 +133,7 @@ def verify_mac_v1(key, message, mac_to_verify):
     Verify the integrity of the message using the provided key and MAC.
     """
     generated_mac = generate_mac_v1(key, message)
-    return generated_mac == mac_to_verify
+    return hmac.compare_digest(generated_mac, mac_to_verify)
 
 
 # Encryption function based on LWE and Hash function SHA-3_256
@@ -159,7 +159,7 @@ def generate_mac_v2(key, message):
     le1 = 0
     for i in hash_hex_message:
         temp = int(int(np.mod(np.mod(np.around(q*int(i,16)/16) + c1[0][0], q)[0,0],q)))
-        temp_hex = hex(temp)[2:0]
+        temp_hex = hex(temp)[2:]
         delta.append(temp_hex)
         if le < len(str(temp_hex)):        
             le = len(str(temp_hex))
@@ -176,7 +176,7 @@ def generate_mac_v2(key, message):
     # Convert the ASCII message to bytes
     ciphertext_hex = ciphertext_string_part1 + ciphertext_string_part2
     
-    return ciphertext_hex[2:130]
+    return ciphertext_hex[:128]
     
     
     
@@ -187,7 +187,7 @@ def verify_mac_v2(key, message, mac_to_verify):
     Verify the integrity of the message using the provided key and MAC.
     """
     generated_mac = generate_mac_v2(key, message)
-    return generated_mac == mac_to_verify
+    return hmac.compare_digest(generated_mac, mac_to_verify)
 
 ##############################################################################################################
 #HMAC with SHA-2_512 and KMAC with SHA-3_512
